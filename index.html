@@ -501,7 +501,9 @@ label.f input[type=number]{width:84px;background:#0f151b;border:1px solid var(--
     if (!pendingLatLng) return;
     buzz(20);
     var name = $('addName').value.trim() || 'Semaforo aggiunto';
-    signals.push({ id: 'manual-' + Date.now(), lat: pendingLatLng.lat, lon: pendingLatLng.lon, name: name, G: 0, Y: 0, R: 0, t0: null });
+    var id = 'manual-' + Date.now();
+    signals.push({ id: id, lat: pendingLatLng.lat, lon: pendingLatLng.lon, name: name, G: 0, Y: 0, R: 0, t0: null });
+    pinned = id; // selezionato subito come riferimento, così "Misura questo semaforo" punta a lui
     save(); syncMarkers(); updateCount();
     pendingLatLng = null;
     clearPreview();
